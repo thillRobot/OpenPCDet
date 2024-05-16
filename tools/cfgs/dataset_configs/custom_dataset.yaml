@@ -1,12 +1,14 @@
 DATASET: 'CustomDataset'
 DATA_PATH: '../data/custom'
 
-POINT_CLOUD_RANGE: [-75.2, -75.2, -2, 75.2, 75.2, 4]
+POINT_CLOUD_RANGE: [-2.0, -2.0, -2.0, 2.0, 2.0, 2.0] # [xmin ymin zmin xmax ymax zmax]
+
+CLASS_NAMES: ['part1', 'clamp', 'glove']
 
 MAP_CLASS_TO_KITTI: {
-    'Vehicle': 'Car',
-    'Pedestrian': 'Pedestrian',
-    'Cyclist': 'Cyclist',
+    'part1': 'Car',
+    'clamp': 'Pedestrian',
+    'glove': 'Cyclist',
 }
 
 DATA_SPLIT: {
@@ -33,10 +35,11 @@ DATA_AUGMENTOR:
           DB_INFO_PATH:
               - custom_dbinfos_train.pkl
           PREPARE: {
-             filter_by_min_points: ['Vehicle:5', 'Pedestrian:5', 'Cyclist:5'],
+             filter_by_min_points: ['part1:5', 'clamp:5', 'glove:5'],
+             #filter_by_difficulty: [-1],
           }
 
-          SAMPLE_GROUPS: ['Vehicle:20', 'Pedestrian:15', 'Cyclist:15']
+          SAMPLE_GROUPS: ['part1:1', 'clamp:1', 'glove:1'] # i think this must be <= min num labels in a label file
           NUM_POINT_FEATURES: 4
           DATABASE_WITH_FAKELIDAR: False
           REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
@@ -62,7 +65,7 @@ DATA_PROCESSOR:
       }
 
     - NAME: transform_points_to_voxels
-      VOXEL_SIZE: [0.1, 0.1, 0.15]
+      VOXEL_SIZE: [0.025, 0.025, 0.1]
       MAX_POINTS_PER_VOXEL: 5
       MAX_NUMBER_OF_VOXELS: {
         'train': 150000,
