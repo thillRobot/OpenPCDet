@@ -23,8 +23,8 @@ INFO_PATH: {
 
 POINT_FEATURE_ENCODING: {
     encoding_type: absolute_coordinates_encoding,
-    used_feature_list: ['x', 'y', 'z', 'intensity'],
-    src_feature_list: ['x', 'y', 'z', 'intensity'],
+    used_feature_list: ['x', 'y', 'z', 'intensity','red','green','blue'],
+    src_feature_list: ['x', 'y', 'z', 'intensity','red','green','blue'],
 }
 
 DATA_AUGMENTOR:
@@ -40,7 +40,7 @@ DATA_AUGMENTOR:
           }
 
           SAMPLE_GROUPS: ['part1:1', 'clamp:1', 'glove:1'] # i think this must be <= min num labels in a label file
-          NUM_POINT_FEATURES: 4
+          NUM_POINT_FEATURES: 7
           DATABASE_WITH_FAKELIDAR: False
           REMOVE_EXTRA_WIDTH: [0.0, 0.0, 0.0]
           LIMIT_WHOLE_SCENE: True
@@ -65,7 +65,7 @@ DATA_PROCESSOR:
       }
 
     - NAME: transform_points_to_voxels
-      VOXEL_SIZE: [0.025, 0.025, 0.1]
+      VOXEL_SIZE: [0.0025, 0.0025, 0.1]
       MAX_POINTS_PER_VOXEL: 5
       MAX_NUMBER_OF_VOXELS: {
         'train': 150000,

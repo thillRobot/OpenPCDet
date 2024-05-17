@@ -37,7 +37,7 @@ MODEL:
         ANCHOR_GENERATOR_CONFIG: [
             {
                 'class_name': 'part1',
-                'anchor_sizes': [[0.5, 2.0, 3.0]],
+                'anchor_sizes': [[0.15, 0.25, 0.75]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0],
                 'align_center': False,
@@ -47,7 +47,7 @@ MODEL:
             },
             {
                 'class_name': 'clamp',
-                'anchor_sizes': [[0.5, 2.0, 3.0]],
+                'anchor_sizes': [[0.15, 0.25, 0.5]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0],
                 'align_center': False,
@@ -57,7 +57,7 @@ MODEL:
             },
             {
                 'class_name': 'glove',
-                'anchor_sizes': [[0.5, 2.0, 3.0]],
+                'anchor_sizes': [[0.15, 0.25, 0.5]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0],
                 'align_center': False,
@@ -78,7 +78,7 @@ MODEL:
         LOSS_CONFIG:
             LOSS_WEIGHTS: {
                 'cls_weight': 1.0,
-                'loc_weight': 2.0,
+                'loc_weight': 0.5,
                 'dir_weight': 0.2,
                 'code_weights': [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]
             }
