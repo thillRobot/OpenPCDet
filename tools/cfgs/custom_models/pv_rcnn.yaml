@@ -1,7 +1,7 @@
-CLASS_NAMES: ['part1', 'clamp', 'glove']
+CLASS_NAMES: ['part1', 'part2', 'clamp', 'glove']
 
 DATA_CONFIG:
-    _BASE_CONFIG_: /OpenPCDet/tools/cfgs/dataset_configs/custom_dataset.yaml
+    _BASE_CONFIG_: /OpenPCDet/tools/cfgs/dataset_configs/custom_parts.yaml
 
 MODEL:
     NAME: PVRCNN
@@ -37,6 +37,16 @@ MODEL:
         ANCHOR_GENERATOR_CONFIG: [
             {
                 'class_name': 'part1',
+                'anchor_sizes': [[0.15, 0.25, 0.75]],
+                'anchor_rotations': [0, 1.57],
+                'anchor_bottom_heights': [0],
+                'align_center': False,
+                'feature_map_stride': 8,
+                'matched_threshold': 0.55,
+                'unmatched_threshold': 0.4
+            },
+            {
+                'class_name': 'part2',
                 'anchor_sizes': [[0.15, 0.25, 0.75]],
                 'anchor_rotations': [0, 1.57],
                 'anchor_bottom_heights': [0],
