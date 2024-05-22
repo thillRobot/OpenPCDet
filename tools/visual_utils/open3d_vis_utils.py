@@ -9,10 +9,11 @@ import matplotlib
 import numpy as np
 
 box_colormap = [
-    [1, 1, 1],
-    [0, 1, 0],
-    [0, 1, 1],
-    [1, 1, 0],
+    [1, 1, 1],   # class 0?
+    [0, 1, 0],   # class 1
+    [0, 1, 1],   # class 2
+    [1, 1, 0],   # class 3
+    [1, 0, 1],   # class 4 # must add row for each class or list index error:q
 ]
 
 
